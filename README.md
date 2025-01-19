@@ -1,70 +1,185 @@
-# Getting Started with Create React App
+# Guide: Start the project locally and deploy it to Firebase
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Before setting up the project on your system, ensure that the following tools are installed:
 
-### `npm start`
+1. **Node.js**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   - Download the latest LTS version from [nodejs.org](https://nodejs.org/) and install it.
+   - After installation, verify the versions of Node.js and npm (Node Package Manager):
+     ```bash
+     node -v
+     npm -v
+     ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Firebase CLI**
 
-### `npm test`
+   - Install Firebase tools globally:
+     ```bash
+     npm install -g firebase-tools
+     ```
+   - Verify the installation:
+     ```bash
+     firebase --version
+     ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Step 1: Clone the repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your system:
+   ```bash
+   git clone https://github.com/Mortl94/Art-Gallery.git
+   ```
+2. Navigate into the project directory:
+   ```bash
+   cd Art-Gallery
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Step 2: Set up Firebase services
 
-### `npm run eject`
+1. **Firebase Database:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   - Open Firebase Console and select your project.
+   - Navigate to **Build > Firestore Database** and click **Create Database**.
+   - Create a collection named `descriptions`.
+     - This collection should contain documents with two fields:
+       - **category:** Should match one of the categories defined in `PhotoGallery.js`:
+         ```javascript
+         ['All Galleries', 'Landscape', 'Crazy', 'Flowers']
+         ```
+       - **description:** A description of the image, such as dimensions or details.
+     - Add documents with incremental numeric IDs, e.g., `1`, `2`, `3`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Firebase Storage:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   - In Firebase Console, navigate to **Build > Storage**.
+   - Click **Create** and configure storage options.
+   - Create two folders:
+     - **images:** Upload gallery images here. Ensure file names are sequentially numbered (e.g., `1.jpg`, `2.jpg`, `3.jpg`). Each number must correspond to a description in the Firestore database.
+     - **website:** Upload the `profile_pic.png` file here, which is displayed on the Artist page.
+     - Make sure file names match the references in the code.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Enable App Hosting and Analytics:**
 
-## Learn More
+   - Navigate to **Build > Hosting** and set up Firebase Hosting.
+   - Optionally, enable the **Analytics Dashboard** in Firebase Console to collect app usage statistics.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Step 3: Install dependencies
 
-### Code Splitting
+1. Install all required Node.js dependencies:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Step 4: Configure `.env` file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Create a `.env` file in the project root.
 
-### Making a Progressive Web App
+2. Add your Firebase project settings to the `.env` file. Example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```env
+   FIREBASE_API_KEY=<Your-API-Key>
+   FIREBASE_AUTH_DOMAIN=<Your-Auth-Domain>
+   FIREBASE_PROJECT_ID=<Your-Project-ID>
+   FIREBASE_STORAGE_BUCKET=<Your-Storage-Bucket>
+   FIREBASE_MESSAGING_SENDER_ID=<Your-Messaging-Sender-ID>
+   FIREBASE_APP_ID=<Your-App-ID>
+   ```
 
-### Advanced Configuration
+   - These values are available in Firebase Console under **Project Settings > General > Firebase SDK snippet** (choose the configuration for Web Apps).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3. Ensure the `.env` file is added to your `.gitignore` to prevent sensitive information from being committed to your repository.
 
-### Deployment
+4. Update your code to use the environment variables, e.g., in `firebase.js`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```javascript
+   const firebaseConfig = {
+     apiKey: process.env.FIREBASE_API_KEY,
+     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+     projectId: process.env.FIREBASE_PROJECT_ID,
+     storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+     appId: process.env.FIREBASE_APP_ID
+   };
 
-### `npm run build` fails to minify
+   export default firebaseConfig;
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Step 5: Start the local development server
+
+1. Start the local development server:
+   ```bash
+   npm start
+   ```
+2. Open the local development environment in your browser:
+   - Default URL: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Step 6: Configure Firebase project
+
+1. Log in to Firebase CLI:
+   ```bash
+   firebase login
+   ```
+2. Initialize Firebase in your project:
+   ```bash
+   firebase init
+   ```
+   - **Select Hosting:** Enable Firebase Hosting.
+   - **Choose project:** Select your Firebase project from the list.
+   - **Public folder:** Specify the folder containing your build files (e.g., `build`).
+   - **Single-Page App:** Answer `y` as the app uses client-side routing via React Router.
+
+---
+
+## Step 7: Build and deploy the project
+
+   npm run
+1. Build the project for production:
+   ```bash build
+   ```
+2. Deploy the build to Firebase Hosting:
+   ```bash
+   firebase deploy
+   ```
+3. Open the hosted app at the URL provided by Firebase after deployment.
+
+---
+
+## Summary of essential commands
+
+- **Clone the repository:**
+  ```bash
+  git clone https://github.com/Mortl94/Art-Gallery.git
+  cd Art-Gallery
+  ```
+- **Install dependencies:**
+  ```bash
+  npm install
+  ```
+- **Start the development server:**
+  ```bash
+  npm start
+  ```
+- **Build and deploy:**
+  ```bash
+  npm run build
+  firebase deploy
+  ```
+
+---
+
+If further steps or adjustments are needed, let me know!

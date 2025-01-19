@@ -7,7 +7,7 @@ function ArtistInfo() {
 
     useEffect(() => {
         const storage = getStorage();
-        const imageRef = ref(storage, 'website/profile_pic2.png');
+        const imageRef = ref(storage, 'website/profile_pic.png');
 
         getDownloadURL(imageRef)
             .then((url) => {
@@ -24,7 +24,7 @@ function ArtistInfo() {
                 {imageUrl && <img src={imageUrl} alt="Künstler" className={styles.image} />}
             </div>
             <div className={styles.textContainer}>
-                <h1 className={styles.heading}>Über den Künstler - Test </h1>
+                <h1 className={styles.heading}>Über den Künstler - Test 2 </h1>
                 <p className={styles.paragraph}>Der Künstler dieser atemberaubenden Werke ist Max Mustermann, ein leidenschaftlicher Fotograf, der sich auf Landschaftsfotografie spezialisiert hat. Seine Werke fangen die Schönheit der Natur ein und zeigen seine außergewöhnliche Fähigkeit, Licht und Farben perfekt in Szene zu setzen.</p>
                 <h2 className={styles.subheading}>Wichtige Werke</h2>
                 <ul className={styles.list}>
