@@ -1,0 +1,48 @@
+/* PhotoGallery.module.css */
+
+.photoGalleryContainer {
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* Galerie-Container nimmt den verbleibenden Platz ein */
+.galleryContainer {
+  flex-grow: 1;
+}
+
+/* Bild-Elemente */
+.imageItem {
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* Feste Höhe für Bilder */
+.fixedHeightImg {
+  height: 500px; /* Setze die gewünschte feste Höhe */
+  object-fit: cover; /* Bild skaliert und beschnitten, um den Container auszufüllen */
+  width: 100%; /* Die Breite passt sich an */
+  display: block;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Beschreibungen unter den Bildern */
+.imageItem p {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive Layout: Stack CategoryMenu über der Galerie auf kleinen Bildschirmen */
+@media (max-width: 768px) {
+  .photoGalleryContainer {
+    flex-direction: column;
+  }
+
+  .galleryContainer {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,107 @@
+/* CategoryMenu.module.css */
+
+.container {
+  background-color: #eceff1; /* Gleicher Grauton wie der Header */
+  padding: 20px;
+  color: #333; /* Dunkles Grau für Text */
+  width: 200px; /* Breite des Menüs */
+  border-radius: 10px; /* Gleiche abgerundete Ecken wie die Galerie-Items */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Konsistente Schatten mit anderen Elementen */
+  position: relative; /* Für das Positionieren des mobilen Headers */
+}
+
+/* Header für mobile Geräte */
+.mobileHeader {
+  display: none; /* Versteckt auf großen Bildschirmen */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.filterButton {
+  background-color: #ffcc00;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filterButton:hover {
+  background-color: #e6b800;
+}
+
+/* Anzeige des mobilen Headers auf kleinen Bildschirmen */
+@media (max-width: 768px) {
+  .mobileHeader {
+    display: flex;
+  }
+
+  .container {
+    width: 100%;
+    padding: 10px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .list {
+    display: none; /* Versteckt standardmäßig auf kleinen Bildschirmen */
+    margin-top: 10px;
+  }
+
+  .list.show {
+    display: block; /* Zeigt die Liste an, wenn der Filter geöffnet ist */
+  }
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #333; /* Dunkles Grau für die Linie unter der Überschrift */
+  padding-bottom: 10px;
+}
+
+/* Überschrift verstecken auf kleinen Bildschirmen */
+@media (max-width: 768px) {
+  .heading {
+    display: none;
+  }
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  padding: 10px 0;
+  cursor: pointer;
+  color: #333; /* Dunkles Grau für die nicht aktive Kategorie */
+  transition: color 0.3s ease;
+  border-left: 3px solid transparent; /* Für den aktiven Zustand */
+}
+
+.listItem:hover {
+  color: #ffcc00; /* Goldene Farbe bei Hover, passend zu deinen Links */
+}
+
+.active {
+  color: #ffcc00; /* Goldene Farbe für die aktive Kategorie */
+  border-left: 3px solid #ffcc00; /* Goldene Linie für die aktive Kategorie */
+}
+
+/* Sicherstellen, dass die Liste auf großen Bildschirmen immer angezeigt wird */
+@media (min-width: 769px) {
+  .list {
+    display: block;
+  }
+}

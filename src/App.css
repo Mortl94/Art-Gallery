@@ -1,0 +1,256 @@
+/* app.css */
+
+/* Allgemeine Stile */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5; /* Heller Hintergrund */
+  color: #333; /* Dunkles Grau für Text */
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #eceff1; /* Heller Grauton für den Header */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #333; /* Dunkles Grau für Text */
+}
+
+.App-link {
+  color: #ffcc00; /* Dezentes Gold für Links */
+}
+
+/* Typografie-Stile */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif; /* Merriweather für Überschriften */
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 0.75em;
+}
+
+h3 {
+  font-size: 1.75em;
+  font-weight: 700;
+  margin-bottom: 0.75em;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Navbar-Stile */
+nav {
+  background-color: #eceff1; /* Gleicher Grauton wie der Header */
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #333; /* Dunkles Grau für das Logo */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333; /* Dunkles Grau für die Links */
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #ffcc00; /* Dezentes Gold für Hover */
+  color: #333; /* Bleibt dunkelgrau für Text */
+}
+
+/* Masonry Grid Styles */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -15px; /* Gutter-Größe anpassen */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 15px; /* Gutter-Größe anpassen */
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > div {
+  margin-bottom: 15px; /* Gutter-Größe anpassen */
+}
+
+/* Ändere die Hintergrundfarbe des Overlays */
+.ril__outer {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Passe den Titelstil an */
+.ril__caption {
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Hintergrundfarbe und Schatten für die AppBar */
+.app-header {
+  background-color: #eceff1; /* Gleicher Grauton wie die Navbar */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Schriftart, Farbe und Abstand für den Titel */
+.app-title {
+  flex-grow: 1;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; /* Dunkles Grau */
+}
+
+/* Stil für Navigations-Buttons */
+.nav-button {
+  color: #333; /* Dunkles Grau */
+  margin-left: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover-Effekt für die Buttons */
+.nav-button:hover {
+  background-color: #ffcc00; /* Dezentes Gold für Hover */
+  color: #333; /* Bleibt dunkelgrau für Text */
+}
+
+/* Allgemeine Container für Inhalt */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Galerie-Layout */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Abschnitt mit mehr Abstand */
+.section {
+  margin-bottom: 40px;
+  padding: 20px 0;
+}
+
+/* Kartenlayout für Künstler-Info */
+.artist-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+/* Whitespace für Textelemente */
+p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .gallery {
+    gap: 10px;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+}
+
+/* Responsive Anpassung, falls benötigt */
+@media (max-width: 600px) {
+  .app-title {
+    font-size: 20px;
+  }
+
+  .nav-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
