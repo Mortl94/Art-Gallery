@@ -13,13 +13,13 @@ function App() {
         <AppBar position="sticky" style={{ backgroundColor: '#eceff1', color: '#333', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
           <Toolbar>
             <Typography variant="h6" style={{ flexGrow: 1 }}>
-              Foto-Galerie
+              Sebastian Gessenharter
             </Typography>
             <Button color="inherit" component={Link} to="/" style={{ color: '#333' }}>
               Galerie
             </Button>
             <Button color="inherit" component={Link} to="/artist" style={{ color: '#333' }}>
-              Über den Künstler
+              Zur Person
             </Button>
 {/*             <Button color="inherit" component={Link} to="/admin" style={{ color: '#333' }}>
               Admin

@@ -14,7 +14,7 @@ function PhotoGallery() {
   const [images, setImages] = useState([]);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('All Galleries'); // State für die ausgewählte Kategorie
+  const [selectedCategory, setSelectedCategory] = useState('Alle'); // State für die ausgewählte Kategorie
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -78,7 +78,7 @@ function PhotoGallery() {
 
   // Funktion zum Filtern der Bilder basierend auf der ausgewählten Kategorie
   const filteredImages = images.filter((image) => {
-    if (selectedCategory === 'All Galleries') {
+    if (selectedCategory === 'Alle') {
       return true; // Alle Bilder anzeigen
     }
     if (!image.category) {
@@ -90,7 +90,7 @@ function PhotoGallery() {
   return (
     <div className={styles.photoGalleryContainer}>
       <CategoryMenu
-        categories={['All Galleries', 'Landscape', 'Crazy', 'Flowers']}
+        categories={['Alle', 'Kompositionen', 'Improvisationen', 'Studien', 'Landschaften']}
         onCategorySelect={(category) => setSelectedCategory(category)}
         selectedCategory={selectedCategory}
       />
